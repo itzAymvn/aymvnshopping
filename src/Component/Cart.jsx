@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import CartContext from "../Context/CartContext";
 const Cart = () => {
-    let { cart } = useContext(CartContext);
+    let { cart, setCart } = useContext(CartContext);
 
     // Sort cart by price
     cart.sort((a, b) => b.price - a.price);
@@ -58,7 +58,7 @@ const Cart = () => {
                             className="btn btn-danger float-right"
                             onClick={() => {
                                 localStorage.clear();
-                                window.location.reload();
+                                setCart([]);
                             }}>
                             Clear Cart
                         </button>
