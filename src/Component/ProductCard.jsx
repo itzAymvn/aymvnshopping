@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
                 className="card-img-top"
                 src={product.image}
                 style={{ width: "100%", height: "300px" }}
-                alt="Card image cap"
+                alt="Card cap"
             />
             <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
