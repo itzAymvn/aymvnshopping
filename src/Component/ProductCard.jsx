@@ -4,25 +4,26 @@ import CartContext from "../Context/CartContext";
 const ProductCard = ({ product }) => {
     let { addToCart } = useContext(CartContext);
     return (
-        <div className="card col-md-12" style={{ width: "18rem" }}>
+        <div className="card m-2 col-md-12" style={{ width: "18rem" }}>
             <img
                 className="card-img-top"
+                style={{ height: "250px" }}
                 src={product.image}
-                style={{ width: "100%", height: "300px" }}
-                alt="Card cap"
+                alt={product.name}
             />
-            <div className="card-body">
-                <h5 className="card-title">{product.name}</h5>
-                <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                </p>
+            <div className="card-body d-flex flex-column">
+                <h5 className="card-title font-weight-bold">{product.name}</h5>
+                <p className="card-text">{product.describe}</p>
                 <button
-                    className="btn btn-primary"
+                    className="btn mt-auto btn-primary"
                     onClick={() => {
                         addToCart(product);
                     }}>
-                    Buy for ${product.price}
+                    Buy for{" "}
+                    <span className="badge bg-light text-dark">
+                        {" "}
+                        ${product.price}
+                    </span>{" "}
                 </button>
             </div>
         </div>

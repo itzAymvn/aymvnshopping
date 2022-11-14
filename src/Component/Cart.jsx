@@ -10,12 +10,13 @@ const Cart = () => {
         <>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-12">
                         <table className="table table-bordered my-3">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Product</th>
+                                    <th>Image</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
@@ -26,6 +27,13 @@ const Cart = () => {
                                     <tr>
                                         <td>{item.id}</td>
                                         <td>{item.name}</td>
+                                        <td>
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                width={100}
+                                            />
+                                        </td>
                                         <td>${item.price}</td>
                                         <td>{item.quantity}</td>
                                         <td>${item.price * item.quantity}</td>

@@ -1,3 +1,5 @@
+import "./App.css";
+
 // Importing react and react router dom
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
