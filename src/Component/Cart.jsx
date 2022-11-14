@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import CartContext from "../Context/CartContext";
 const Cart = () => {
-    let { cart, setCart } = useContext(CartContext);
+    let { cart, setCart, increaseQuantity, decreaseQuantity, removeFromCart } =
+        useContext(CartContext);
 
     // Sort cart by price
     cart.sort((a, b) => b.price - a.price);
 
     return cart.length > 0 ? (
         <>
-            <div className="container">
+            <div className="container mt-5">
                 <div className="row">
                     <div className="col-12">
                         <table className="table table-bordered my-3">
@@ -20,6 +21,7 @@ const Cart = () => {
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,8 +37,29 @@ const Cart = () => {
                                             />
                                         </td>
                                         <td>${item.price}</td>
-                                        <td>{item.quantity}</td>
+                                        <td>
+                                            <i
+                                                className="bi bi-arrow-up-circle-fill"
+                                                onClick={() => {
+                                                    increaseQuantity(item);
+                                                }}></i>
+                                            <span className="mx-2">
+                                                {item.quantity}
+                                            </span>
+                                            <i
+                                                className="bi bi-arrow-down-circle-fill ml-3"
+                                                onClick={() => {
+                                                    decreaseQuantity(item);
+                                                }}></i>
+                                        </td>
                                         <td>${item.price * item.quantity}</td>
+                                        <td>
+                                            <i
+                                                className="bi bi-trash-fill"
+                                                onClick={() => {
+                                                    removeFromCart(item);
+                                                }}></i>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

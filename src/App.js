@@ -36,10 +36,47 @@ const App = () => {
         }
     };
 
+    // Function to increase the quantity of a product in the cart
+    const increaseQuantity = (product) => {
+        const productInCart = cart.find((item) => item.id === product.id); // Find the product in the cart
+        productInCart.quantity++; // Increase the quantity
+        setCart([...cart]); // Update the cart
+        localStorage.setItem("cart", JSON.stringify(cart)); // Update the cart in the local storage
+    };
+
+    // Function to decrease the quantity of a product in the cart
+    const decreaseQuantity = (product) => {
+        const productInCart = cart.find((item) => item.id === product.id); // Find the product in the cart
+        if (productInCart.quantity > 1) {
+            // If the quantity is greater than 1
+            productInCart.quantity--; // Decrease the quantity
+            setCart([...cart]); // Update the cart
+            localStorage.setItem("cart", JSON.stringify(cart)); // Update the cart in the local storage
+        } else {
+            // If the quantity is 1
+            setCart(cart.filter((item) => item.id !== product.id)); // Remove the product from the cart
+            localStorage.setItem("cart", JSON.stringify(cart)); // Update the cart in the local storage
+        }
+    };
+
+    // Function to remove a product from the cart
+    const removeFromCart = (product) => {
+        setCart(cart.filter((item) => item.id !== product.id)); // Remove the product from the cart
+        localStorage.setItem("cart", JSON.stringify(cart)); // Update the cart in the local storage
+    };
+
     return (
         <>
             {/* Wrap the app in the context provider */}
-            <CartContext.Provider value={{ cart, setCart, addToCart }}>
+            <CartContext.Provider
+                value={{
+                    cart,
+                    setCart,
+                    addToCart,
+                    increaseQuantity,
+                    decreaseQuantity,
+                    removeFromCart,
+                }}>
                 <Navbar />
                 <Routes>
                     {/* Add the cart route */}
