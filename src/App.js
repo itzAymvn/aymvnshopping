@@ -1,7 +1,7 @@
 import "./App.css";
 
 // Importing react and react router dom
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // importing Bootstrap CSS and Icons
@@ -20,6 +20,11 @@ const App = () => {
     const [cart, setCart] = useState(
         JSON.parse(localStorage.getItem("cart")) || []
     ); // Cart state
+
+    // Update the cart in local storage when cart state changes
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]); // Only update when cart state changes
 
     // Function to add to cart
     const addToCart = (product) => {
