@@ -17,4 +17,4 @@ This is a simple device shopping cart built with ReactJs, React Router, Bootstra
 
 # LICENSE
 
-MIT License
+[![GitHub](https://img.shields.io/github/license/Itzaymvn/aymvnshopping?color=%238e2be2&style=for-the-badge)](./LICENSE)
